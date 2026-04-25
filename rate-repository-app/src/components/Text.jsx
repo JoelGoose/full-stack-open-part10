@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 const Text = ({ fontSize, fontWeight, style, ...props }) => {
   const textStyle = [
     styles.text,
-    fontSize === "heading" && styles.fontSizeheading,
+    fontSize === "heading" && styles.fontSizeHeading,
     fontWeight === "bold" && styles.fontWeightBold,
     style,
   ];

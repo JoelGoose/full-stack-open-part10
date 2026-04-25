@@ -1,9 +1,11 @@
-import { Text, View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import theme from "../../theme";
 import RepositoryDescription from "./RepositoryDescription";
+import RepositoryStats from "./RepositoryStats";
+
 const styles = StyleSheet.create({
   mainContainer: {
-    backgroundColor: theme.colors.repositoryBackground,
+    backgroundColor: theme.colors.itemBackground,
     margin: 5,
     padding: 5,
     borderRadius: 10,
@@ -20,6 +22,9 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 5,
   },
+  bottomContainer: {
+    padding: 5
+  }
 });
 
 const RepositoryItem = ({ repository }) => {
@@ -34,11 +39,9 @@ const RepositoryItem = ({ repository }) => {
           <RepositoryDescription repository={repository} />
         </View>
       </View>
-
-      <Text>Stars: {repository.stargazersCount}</Text>
-      <Text>Forks: {repository.forksCount}</Text>
-      <Text>Reviews: {repository.reviewCount}</Text>
-      <Text>Rating: {repository.ratingAverage}</Text>
+      <View style={styles.bottomContainer}>
+        <RepositoryStats repository={repository}/>
+      </View>
     </View>
   );
 };
