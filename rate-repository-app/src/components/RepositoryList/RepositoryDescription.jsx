@@ -8,15 +8,15 @@ const styles = StyleSheet.create({
   },
   languageTag: {
     backgroundColor: theme.colors.blueBackground,
-    color: '#ffffff',
-    alignSelf: 'flex-start',
+    color: "#ffffff",
+    alignSelf: "flex-start",
     borderRadius: 5,
-    padding: 4
+    padding: 4,
   },
   container: {
     padding: 3,
-    gap: 3
-  }
+    gap: 3,
+  },
 });
 
 const RepositoryDescription = ({ repository }) => {

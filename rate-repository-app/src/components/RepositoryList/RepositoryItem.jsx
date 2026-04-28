@@ -23,13 +23,13 @@ const styles = StyleSheet.create({
     marginLeft: 5,
   },
   bottomContainer: {
-    padding: 5
-  }
+    padding: 5,
+  },
 });
 
 const RepositoryItem = ({ repository }) => {
   return (
-    <View style={styles.mainContainer}>
+    <View testID="repositoryItem" style={styles.mainContainer}>
       <View style={styles.topMainContainer}>
         <Image
           style={styles.avatar}
@@ -40,7 +40,7 @@ const RepositoryItem = ({ repository }) => {
         </View>
       </View>
       <View style={styles.bottomContainer}>
-        <RepositoryStats repository={repository}/>
+        <RepositoryStats repository={repository} />
       </View>
     </View>
   );
