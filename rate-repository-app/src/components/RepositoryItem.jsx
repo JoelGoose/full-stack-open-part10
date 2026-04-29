@@ -1,7 +1,9 @@
 import { View, StyleSheet, Image } from "react-native";
-import theme from "../../theme";
-import RepositoryDescription from "./RepositoryDescription";
-import RepositoryStats from "./RepositoryStats";
+import * as Linking from "expo-linking";
+import theme from "../theme";
+import RepositoryDescription from "./RepositoryList/RepositoryDescription";
+import RepositoryStats from "./RepositoryList/RepositoryStats";
+import Button from "./Button";
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -23,11 +25,23 @@ const styles = StyleSheet.create({
     marginLeft: 5,
   },
   bottomContainer: {
-    padding: 5,
+    padding: 10,
+  },
+  // stylesheet copied from SignIn, should be moved to theme?
+  // better would be to even create own component for the button!
+  button: {
+    backgroundColor: theme.colors.blueBackground,
+    alignItems: "center",
+    borderRadius: 5,
+    padding: 15,
   },
 });
 
-const RepositoryItem = ({ repository }) => {
+const RepositoryItem = ({ repository, showGithubButton }) => {
+  const onPress = () => {
+    Linking.openURL(repository.url);
+  };
+
   return (
     <View testID="repositoryItem" style={styles.mainContainer}>
       <View style={styles.topMainContainer}>
@@ -42,6 +56,9 @@ const RepositoryItem = ({ repository }) => {
       <View style={styles.bottomContainer}>
         <RepositoryStats repository={repository} />
       </View>
+      {showGithubButton && (
+        <Button title={"Open in GitHub"} onPress={onPress} />
+      )}
     </View>
   );
 };

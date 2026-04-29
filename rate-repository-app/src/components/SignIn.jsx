@@ -5,6 +5,7 @@ import * as yup from "yup";
 import theme from "../theme";
 import useSignIn from "../hooks/useSignIn";
 import { useNavigate } from "react-router-native";
+import Button from "./Button";
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -20,15 +21,6 @@ const styles = StyleSheet.create({
   },
   inputError: {
     borderColor: theme.colors.redError,
-  },
-  button: {
-    backgroundColor: theme.colors.blueBackground,
-    alignItems: "center",
-    borderRadius: 5,
-    padding: 15,
-  },
-  text: {
-    color: "white",
   },
   errorText: {
     color: theme.colors.redError,
@@ -86,11 +78,7 @@ export const SignInContainer = ({ onSubmit }) => {
       {formik.touched.password && formik.errors.password && (
         <Text style={styles.errorText}>{formik.errors.password}</Text>
       )}
-      <Pressable style={styles.button} onPress={formik.handleSubmit}>
-        <Text fontSize="heading" style={styles.text}>
-          Sign in
-        </Text>
-      </Pressable>
+      <Button title={"Sign in"} onPress={formik.handleSubmit} />
     </View>
   );
 };
