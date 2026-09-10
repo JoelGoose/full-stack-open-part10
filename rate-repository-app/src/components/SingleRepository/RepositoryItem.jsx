@@ -1,9 +1,9 @@
 import { View, StyleSheet, Image } from "react-native";
 import * as Linking from "expo-linking";
-import theme from "../theme";
-import RepositoryDescription from "./RepositoryList/RepositoryDescription";
-import RepositoryStats from "./RepositoryList/RepositoryStats";
-import Button from "./Button";
+import theme from "../../theme";
+import RepositoryDescription from "../RepositoryList/RepositoryDescription";
+import RepositoryStats from "../RepositoryList/RepositoryStats";
+import Button from "../Button";
 
 const styles = StyleSheet.create({
   mainContainer: {
