@@ -3,10 +3,11 @@ import { useQuery } from '@apollo/client/react'
 
 import { GET_USER } from '../graphql/queries';
 
-const useUser = () => {
+const useUser = (includeReviews = false) => {
   const [user, setUser] = useState();
 
   const { loading, error, data } = useQuery(GET_USER, {
+    variables: { includeReviews: includeReviews },
     fetchPolicy: 'cache-and-network'
   });
 

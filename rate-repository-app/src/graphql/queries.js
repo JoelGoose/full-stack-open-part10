@@ -21,10 +21,20 @@ export const GET_REPOSITORIES = gql`
 `
 
 export const GET_USER = gql`
-  query getUser {
+  query getUser($includeReviews: Boolean = false) {
     me {
       id
       username
+      reviews @include(if: $includeReviews) {
+        edges {
+          node {
+            repositoryId
+            createdAt
+            text
+            rating
+          }
+        }
+      }
     }
   }
 `

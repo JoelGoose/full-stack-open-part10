@@ -45,7 +45,9 @@ const RepositoryReviewItem = ({ review }) => {
         <Text style={styles.ratingText}>{review.rating}</Text>
       </View>
       <View style={styles.contentContainer}>
-        <Text style={styles.userText}>{review.user.username}</Text>
+        <Text style={styles.userText}>
+          {review.user?.username ?? review.repositoryId}
+        </Text>
         <Text style={styles.dateText}>
           {format(review.createdAt, "dd/MM/yyyy")}
         </Text>
