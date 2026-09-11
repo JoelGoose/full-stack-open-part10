@@ -12,7 +12,7 @@ const useReviews = (id) => {
 
   useEffect(() => {
     if (data) {
-      setReviews(data.repository.reviews)
+      setReviews(data.repository?.reviews)
     }
   }, [data])
 
