@@ -2,6 +2,8 @@ import { FlatList, View, StyleSheet, Pressable } from "react-native";
 import RepositoryItem from "../SingleRepository/RepositoryItem";
 import useRepositories from "../../hooks/useRepositories";
 import { useNavigate } from "react-router-native";
+import { useState } from "react";
+import SortBy from "./SortBy";
 
 const styles = StyleSheet.create({
   separator: {
@@ -11,7 +13,7 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-export const RepositoryListContainer = ({ repositories }) => {
+export const RepositoryListContainer = ({ repositories, sort, setSort }) => {
   const navigate = useNavigate();
 
   const repositoryNodes = repositories
@@ -27,13 +29,32 @@ export const RepositoryListContainer = ({ repositories }) => {
           <RepositoryItem repository={repository} />
         </Pressable>
       )}
+      ListHeaderComponent={<SortBy sort={sort} setSort={setSort} />}
     />
   );
 };
 
+function sortByInput(sort) {
+  switch (sort) {
+    case "latest":
+      return { orderBy: "CREATED_AT", orderDirection: "DESC" };
+    case "highest":
+      return { orderBy: "RATING_AVERAGE", orderDirection: "DESC" };
+    case "lowest":
+      return { orderBy: "RATING_AVERAGE", orderDirection: "ASC" };
+  }
+}
+
 const RepositoryList = () => {
-  const { repositories } = useRepositories();
-  return <RepositoryListContainer repositories={repositories} />;
+  const [sort, setSort] = useState("latest");
+  const { repositories } = useRepositories(sortByInput(sort));
+  return (
+    <RepositoryListContainer
+      repositories={repositories}
+      sort={sort}
+      setSort={setSort}
+    />
+  );
 };
 
 export default RepositoryList;
