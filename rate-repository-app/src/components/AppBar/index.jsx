@@ -3,9 +3,11 @@ import theme from "../../theme";
 import AppBarTab from "./AppBarTab";
 import useUser from "../../hooks/useUser";
 import useSignOut from "../../hooks/useSignOut";
+import Constants from "expo-constants";
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: Constants.statusBarHeight,
     backgroundColor: theme.colors.appBar,
     padding: 12,
   },

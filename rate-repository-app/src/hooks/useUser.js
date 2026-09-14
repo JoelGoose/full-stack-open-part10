@@ -6,7 +6,7 @@ import { GET_USER } from '../graphql/queries';
 const useUser = (includeReviews = false) => {
   const [user, setUser] = useState();
 
-  const { loading, error, data } = useQuery(GET_USER, {
+  const { loading, error, data, refetch } = useQuery(GET_USER, {
     variables: { includeReviews: includeReviews },
     fetchPolicy: 'cache-and-network'
   });
@@ -17,7 +17,7 @@ const useUser = (includeReviews = false) => {
     }
   }, [data]);
 
-  return { user, loading, error };
+  return { user, loading, error, refetch };
 };
 
 export default useUser;

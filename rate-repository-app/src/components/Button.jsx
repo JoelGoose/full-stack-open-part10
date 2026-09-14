@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: theme.colors.blueBackground,
     alignItems: "center",
+    justifyContent: "center",
     borderRadius: 5,
     padding: 15,
     margin: 5,
@@ -15,9 +16,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const Button = ({ title, onPress }) => {
+const Button = ({ title, onPress, style }) => {
   return (
-    <Pressable style={styles.button} onPress={onPress}>
+    <Pressable style={[styles.button, style]} onPress={onPress}>
       <Text fontSize="heading" style={styles.text}>
         {title}
       </Text>

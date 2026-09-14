@@ -3,7 +3,7 @@ import RepositoryReviewItem from "./SingleRepository/RepositoryReviewItem";
 import useUser from "../hooks/useUser";
 
 const UserReviews = () => {
-  const { user, loading } = useUser(true);
+  const { user, loading, refetch } = useUser(true);
   if (loading || !user) {
     return <Text>Loading...</Text>;
   }
@@ -12,7 +12,9 @@ const UserReviews = () => {
   return (
     <FlatList
       data={reviews}
-      renderItem={({ item }) => <RepositoryReviewItem review={item} />}
+      renderItem={({ item }) => (
+        <RepositoryReviewItem review={item} myReviews refetch={refetch} />
+      )}
       keyExtractor={({ repositoryId }) => repositoryId}
     />
   );

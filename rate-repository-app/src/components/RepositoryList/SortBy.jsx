@@ -4,8 +4,9 @@ import theme from "../../theme";
 
 const style = StyleSheet.create({
   picker: {
-    margin: 10,
-    padding: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    marginLeft: 5,
   },
   input: {
     borderWidth: 1,
